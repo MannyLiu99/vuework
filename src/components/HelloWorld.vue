@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
     <div id="myDemo">
+      <div>2048</div>
       <button @click="clickOnly">点击</button> <button @click="showTime">promise</button> <button @click="newFunction">箭头函数和function</button>
       <button @click="myReverse">字符串反转</button>
       <table>
