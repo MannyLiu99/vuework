@@ -4,6 +4,7 @@
       <div>2048</div>
       <button @click="clickOnly">点击</button> <button @click="showTime">promise</button> <button @click="newFunction">箭头函数和function</button>
       <button @click="myReverse">字符串反转</button>
+      <div>连加:<input type="number" v-model="allAddInit"/><span @click="allAddClick">结果：{{allAddResult}}</span></div>
       <table>
         <thead><tr><th>序号</th><th>书名</th><th>作者</th><th>价格</th><th @click='showAdd'>添加</th></tr></thead>
         <tbody>
@@ -18,6 +19,7 @@
         <label>价格:</label><input v-model="bookTemp.price"/>
         <button @click="add">确定</button>
       </div>
+      <div><button @click="generator">generator</button></div>
     </div>
   </div>
 </template>
@@ -30,10 +32,48 @@ export default {
       bookTemp: {name: '', author: '', price: '0'},
       books: [],
       index: 0,
-      showAddFlag: false
+      showAddFlag: false,
+      allAddInit: 0,
+      allAddResult: 0
     }
   },
   methods: {
+    allAddFun: function (n) {
+      // 带有缓存功能的连加
+      var allAddResultCache = {'0': 0}
+      var result = 0
+      if (n < 0) {
+        return result
+      }
+      // console.log('n:' + n)
+      // console.log(allAddResultCache)
+      if (n === 0) {
+        result = 0
+      } else if (n === 1) {
+        result = 1
+        allAddResultCache[n] = result
+      } else {
+        result = n + this.allAddFun(n - 1)
+        allAddResultCache[n] = result
+      }
+      console.log(allAddResultCache)
+      return result
+    },
+    allAddClick: function () {
+      this.allAddResult = this.allAddFun(parseInt(this.allAddInit))
+    },
+    generator: function () {
+      function* gen (x) {
+        console.log('参数：' + x)
+        var y = yield x + 2
+        console.log('参数11：' + y)
+        return y
+      }
+      let g = gen(1)
+      console.log(g.next())
+      console.log(g.next())
+      // console.log(g.next(4))
+    },
     showAdd: function () {
       this.showAddFlag = true
     },
@@ -49,9 +89,9 @@ export default {
     },
     clickOnly: function () {
       function Foo () {
-        var getName = function () {
-          console.log('1')
-        }
+        // var getName = function () {
+        //   // console.log('1')
+        // }
         // return this
       }
       Foo.getName = function () {
@@ -60,9 +100,9 @@ export default {
       Foo.prototype.getName = function () {
         console.log('3')
       }
-      var getName = function () {
-        console.log('4')
-      }
+      // var getName = function () {
+      //   console.log('4')
+      // }
       function getName () {
         console.log('5')
       }
@@ -72,9 +112,9 @@ export default {
       getName()
       Foo()
       getName()
-      new Foo.getName()
+      // new Foo.getName()
       new Foo().getName()
-      new new Foo().getName()
+      // new new Foo().getName()
     },
     showTime: function () {
       /* for (let i = 0; i < 9; i++) {

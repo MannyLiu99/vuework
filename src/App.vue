@@ -1,14 +1,18 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
+  <div id="app11">
+    <!--<img src="./assets/logo.png">-->
     <div>
       <router-link to="/HelloWord">go to hello</router-link>
+      <router-link to="/Demo">go to demo</router-link>
+      <router-link to="/NamesRules">NameRules</router-link>
+      <router-link to="/NumberGame">NumberGame</router-link>
     </div>
-    <router-view/>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
+
 export default {
   name: 'App'
 }
