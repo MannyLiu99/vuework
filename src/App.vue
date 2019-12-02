@@ -6,6 +6,7 @@
       <router-link to="/Demo">go to demo</router-link>
       <router-link to="/NamesRules">NameRules</router-link>
       <router-link to="/NumberGame">NumberGame</router-link>
+      <router-link to="/Particles">Particles</router-link>
     </div>
     <router-view></router-view>
   </div>

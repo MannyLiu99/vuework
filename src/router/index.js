@@ -4,6 +4,7 @@ import HelloWorld from '../components/HelloWorld'
 import Demo from '../components/Demo'
 import NamesRules from '../pages/NamesRules'
 import NumberGame from '../pages/NumberGame'
+import Particles from '../pages/Particles'
 
 Vue.use(Router)
 
@@ -33,6 +34,11 @@ export default new Router({
       path: '/NumberGame',
       name: 'NumberGame',
       component: NumberGame
+    },
+    {
+      path: '/Particles',
+      name: 'Particles',
+      component: Particles
     }
   ]
 })
